@@ -7,7 +7,7 @@ import ListItemText from '@mui/material/ListItemText';
 import Checkbox from '@mui/material/Checkbox';
 import IconButton from '@mui/material/IconButton';
 import CommentIcon from '@mui/icons-material/Comment';
-import { Container } from '@mui/material';
+import { Container, Tooltip } from '@mui/material';
 import {
     CheckCircleOutlineRounded,
     DeleteRounded,
@@ -44,12 +44,16 @@ function ListElement() {
                         key={value}
                         secondaryAction={
                             <Container>
+                                <Tooltip title="Edit">
                                 <IconButton edge="end" aria-label="comments">
                                     <EditRounded color="success" />
                                 </IconButton>
+                                </Tooltip>
+                                <Tooltip title="Delete">
                                 <IconButton edge="end" aria-label="comments">
                                     <DeleteRounded color="error" />
                                 </IconButton>
+                                </Tooltip>
                             </Container>
                         }
                         disablePadding
