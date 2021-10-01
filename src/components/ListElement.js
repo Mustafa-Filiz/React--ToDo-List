@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
@@ -8,10 +8,15 @@ import Checkbox from '@mui/material/Checkbox';
 import IconButton from '@mui/material/IconButton';
 import CommentIcon from '@mui/icons-material/Comment';
 import { Container } from '@mui/material';
-import { CheckCircleOutlineRounded, DeleteRounded, EditRounded, RadioButtonUncheckedRounded } from '@mui/icons-material';
+import {
+    CheckCircleOutlineRounded,
+    DeleteRounded,
+    EditRounded,
+    RadioButtonUncheckedRounded,
+} from '@mui/icons-material';
 
 function ListElement() {
-    const [checked, setChecked] = React.useState([0]);
+    const [checked, setChecked] = useState([0]);
 
     const handleToggle = (value) => () => {
         const currentIndex = checked.indexOf(value);
@@ -35,6 +40,7 @@ function ListElement() {
 
                 return (
                     <ListItem
+                        // sx={{textDecoration : "line-through", opacity : 0.5}}
                         key={value}
                         secondaryAction={
                             <Container>
@@ -55,8 +61,8 @@ function ListElement() {
                         >
                             <ListItemIcon>
                                 <Checkbox
-                                icon={<RadioButtonUncheckedRounded/>}
-                                checkedIcon={<CheckCircleOutlineRounded />}
+                                    icon={<RadioButtonUncheckedRounded />}
+                                    checkedIcon={<CheckCircleOutlineRounded />}
                                     edge="start"
                                     checked={checked.indexOf(value) !== -1}
                                     tabIndex={-1}
@@ -66,7 +72,8 @@ function ListElement() {
                             </ListItemIcon>
                             <ListItemText
                                 id={labelId}
-                                primary={`Line item ${value + 1}`}
+                                primary={`Task item ${value + 1}`}
+                                secondary={'Task Day'}
                             />
                         </ListItemButton>
                     </ListItem>
