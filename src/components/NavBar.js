@@ -26,7 +26,7 @@ function NavBar() {
                 <Toolbar>
                     <EventAvailableRounded fontSize="large" />
                     <Typography
-                        variant="h6"
+                        variant="h5"
                         component="div"
                         sx={{ flexGrow: 1 }}
                     >
@@ -35,8 +35,8 @@ function NavBar() {
                     <FormControlLabel
                         control={
                             <Checkbox
-                                icon={<DarkModeRounded color="secondary" />}
-                                checkedIcon={<LightModeRounded color="secondary"/>}
+                                icon={<DarkModeRounded color="secondary" fontSize="large" />}
+                                checkedIcon={<LightModeRounded color="secondary" fontSize="large" />}
                                 checked={auth}
                                 onChange={handleChange}
                                 aria-label="login switch"
