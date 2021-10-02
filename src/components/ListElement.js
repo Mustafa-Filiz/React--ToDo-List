@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
@@ -14,9 +14,11 @@ import {
     EditRounded,
     RadioButtonUncheckedRounded,
 } from '@mui/icons-material';
+import { TodoListContext } from '../contexts/TodoListContext';
 
 function ListElement() {
     const [checked, setChecked] = useState([0]);
+    const {todoList} = useContext(TodoListContext);
 
     const handleToggle = (value) => () => {
         const currentIndex = checked.indexOf(value);

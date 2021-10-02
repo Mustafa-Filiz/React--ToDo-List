@@ -4,8 +4,9 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import { Box } from '@mui/system';
 import { makeStyles } from '@mui/styles';
-import React from 'react';
+import React, {useContext} from 'react';
 import ListElement from './ListElement';
+import { TodoListContext } from '../contexts/TodoListContext';
 
 const useStyles = makeStyles({
     inputField: {
@@ -15,6 +16,7 @@ const useStyles = makeStyles({
 });
 
 const Tasks = () => {
+    const {todoList} = useContext(TodoListContext)
     const classes = useStyles();
     const days = [
         'Monday',

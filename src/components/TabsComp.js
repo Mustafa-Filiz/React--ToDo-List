@@ -5,6 +5,7 @@ import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import { makeStyles } from '@mui/styles';
 import Tasks from './Tasks';
+import ThisWeek from './ThisWeek';
 
 const useStyles = makeStyles({
     tabField: {
@@ -75,7 +76,7 @@ function TabsComp() {
                 <Tasks />
             </TabPanel>
             <TabPanel value={value} index={1}>
-                Item Two
+                <ThisWeek />
             </TabPanel>
         </Box>
     );
