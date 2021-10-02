@@ -3,7 +3,7 @@ import React, { useState, createContext } from 'react';
 export const TodoListContext = createContext();
 
 const initialState = {
-    Monday: ['hello', 'world'],
+    Mustafa: ['merhaba dünya ', 'world'],
     Tuesday: ['hello', 'world'],
     Wednesday: ['hello', 'world'],
     Thursday: ['hello', 'world'],
