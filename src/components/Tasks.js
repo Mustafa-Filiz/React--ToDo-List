@@ -18,15 +18,6 @@ const useStyles = makeStyles({
 const Tasks = () => {
     const {todoList} = useContext(TodoListContext)
     const classes = useStyles();
-    const days = [
-        'Monday',
-        'Tuesday',
-        'Wednesday',
-        'Thursday',
-        'Friday',
-        'Saturday',
-        'Sunday',
-    ];
 
     return (
         <Box>
@@ -49,7 +40,7 @@ const Tasks = () => {
                     label="Select Task Day"
                     // onChange={handleChange}
                 >
-                    {days.map((day) => (
+                    {Object.keys(todoList).map((day) => (
                         <MenuItem value={day}>{day}</MenuItem>
                     ))}
                 </Select>
