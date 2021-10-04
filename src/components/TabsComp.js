@@ -76,7 +76,7 @@ function TabsComp() {
                 <Tasks />
             </TabPanel>
             <TabPanel value={value} index={1}>
-                <ThisWeek />
+                {/* <ThisWeek /> */} This Week
             </TabPanel>
         </Box>
     );

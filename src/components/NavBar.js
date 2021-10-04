@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -12,16 +12,23 @@ import {
     LightModeRounded,
 } from '@mui/icons-material';
 import { Checkbox } from '@mui/material';
+import { ThemeContext } from '../contexts/ThemeContext';
 
 function NavBar() {
     const [auth, setAuth] = useState(true);
+    const { isDark, lightTheme, darkTheme, handleTheme } =
+        useContext(ThemeContext);
 
-    const handleChange = (event) => {
-        setAuth(event.target.checked);
-    };
+    const theme = isDark ? lightTheme : darkTheme;
+
+    // const handleChange = (event) => {
+    //     setAuth(event.target.checked);
+    // };
 
     return (
-        <Box sx={{ flexGrow: 1 }}>
+        <div
+            style={{ color: theme.text, background: theme.background }}
+        >
             <AppBar position="static">
                 <Toolbar>
                     <EventAvailableRounded fontSize="large" />
@@ -35,10 +42,20 @@ function NavBar() {
                     <FormControlLabel
                         control={
                             <Checkbox
-                                icon={<DarkModeRounded color="secondary" fontSize="large" />}
-                                checkedIcon={<LightModeRounded color="secondary" fontSize="large" />}
-                                checked={auth}
-                                onChange={handleChange}
+                                icon={
+                                    <DarkModeRounded
+                                        color="secondary"
+                                        fontSize="large"
+                                    />
+                                }
+                                checkedIcon={
+                                    <LightModeRounded
+                                        color="secondary"
+                                        fontSize="large"
+                                    />
+                                }
+                                // checked={auth}
+                                // onChange={handleChange}
                                 aria-label="login switch"
                             />
                         }
@@ -47,7 +64,7 @@ function NavBar() {
                     />
                 </Toolbar>
             </AppBar>
-        </Box>
+        </div>
     );
 }
 

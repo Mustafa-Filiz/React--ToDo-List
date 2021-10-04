@@ -6,8 +6,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Checkbox from '@mui/material/Checkbox';
 import IconButton from '@mui/material/IconButton';
-import CommentIcon from '@mui/icons-material/Comment';
-import { Container, Tooltip } from '@mui/material';
+import { Container, ListItemSecondaryAction, Tooltip } from '@mui/material';
 import {
     CheckCircleOutlineRounded,
     DeleteRounded,
@@ -18,7 +17,11 @@ import { TodoListContext } from '../contexts/TodoListContext';
 
 function ListElement() {
     const [checked, setChecked] = useState([0]);
-    const {todoList} = useContext(TodoListContext);
+    const { todoList, deleteTask } = useContext(TodoListContext);
+
+    const handleTaskDelete = (e) => {
+        console.log(e.target.id);
+    };
 
     const handleToggle = (value) => () => {
         const currentIndex = checked.indexOf(value);
@@ -37,22 +40,23 @@ function ListElement() {
         <List
             sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
         >
-            {[0, 1, 2, 3].map((value) => {
-                const labelId = `checkbox-list-label-${value}`;
+            {todoList.map((todo) => {
+                const labelId = `checkbox-list-label-${todo.id}`;
 
                 return (
                     <ListItem
                         // sx={{textDecoration : "line-through", opacity : 0.5}}
-                        key={value}
+                        key={todo.id}
+                        id={todo.id}
                         secondaryAction={
                             <Container>
                                 <Tooltip title="Edit">
-                                <IconButton edge="end" aria-label="comments">
+                                <IconButton edge="end" aria-label="edit">
                                     <EditRounded color="success" />
                                 </IconButton>
                                 </Tooltip>
                                 <Tooltip title="Delete">
-                                <IconButton edge="end" aria-label="comments">
+                                <IconButton edge="end" aria-label="delete" onClick={handleTaskDelete}>
                                     <DeleteRounded color="error" />
                                 </IconButton>
                                 </Tooltip>
@@ -62,7 +66,7 @@ function ListElement() {
                     >
                         <ListItemButton
                             role={undefined}
-                            onClick={handleToggle(value)}
+                            onClick={handleToggle(todo.id)}
                             dense
                         >
                             <ListItemIcon>
@@ -70,7 +74,7 @@ function ListElement() {
                                     icon={<RadioButtonUncheckedRounded />}
                                     checkedIcon={<CheckCircleOutlineRounded />}
                                     edge="start"
-                                    checked={checked.indexOf(value) !== -1}
+                                    checked={checked.indexOf(todo.id) !== -1}
                                     tabIndex={-1}
                                     disableRipple
                                     inputProps={{ 'aria-labelledby': labelId }}
@@ -78,8 +82,8 @@ function ListElement() {
                             </ListItemIcon>
                             <ListItemText
                                 id={labelId}
-                                primary={`Task item ${value + 1}`}
-                                secondary={'Task Day'}
+                                primary={todo.task}
+                                secondary={todo.day}
                             />
                         </ListItemButton>
                     </ListItem>

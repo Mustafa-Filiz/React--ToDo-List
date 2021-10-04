@@ -23,18 +23,24 @@ const TodoListContextProvider = ({ children }) => {
         'Saturday',
         'Sunday',
     ]);
-    const [newTask, setNewTask] = useState('');
-    const [taskDay, setTaskDay] = useState('');
 
-    // handleTaskAdd = () => {};
+
+    const addTask = (todo, day) => {
+        setTodoList([
+            ...todoList,
+            {task : todo, day, id : Math.random() }
+        ])
+    };
+
+    const deleteTask = (id) => {
+        setTodoList(todoList.filter(todo => todo.id !== Number(id)))
+    }
 
     const values = {
         todoList,
         days,
-        newTask,
-        setNewTask,
-        taskDay,
-        setTaskDay,
+        addTask,
+        deleteTask
     };
 
     return (

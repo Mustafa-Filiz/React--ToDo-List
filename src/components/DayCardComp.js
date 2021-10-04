@@ -4,8 +4,11 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
 import { ArrowRightRounded } from '@mui/icons-material';
+// import { todoListContext } from '../contexts/TodoListContext';
 
-function DayCardComp({ day, task }) {
+function DayCardComp({ day, dailyTasks }) {
+    // const { todoList } = useContext(todoListContext);
+
     return (
         <Card sx={{ minWidth: 220 }}>
             <CardContent>
@@ -13,11 +16,13 @@ function DayCardComp({ day, task }) {
                     {day}
                 </Typography>
                 <List>
-                    {task.map((item) => {
+                    {dailyTasks.map((task) => {
                         return (
                             <ListItem>
-                                <ListItemIcon><ArrowRightRounded fontSize="large" /></ListItemIcon>
-                                <ListItemText primary={item} />
+                                <ListItemIcon>
+                                    <ArrowRightRounded fontSize="large" />
+                                </ListItemIcon>
+                                <ListItemText primary={task} />
                             </ListItem>
                         );
                     })}
