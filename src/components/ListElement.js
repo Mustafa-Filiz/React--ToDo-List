@@ -6,11 +6,10 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Checkbox from '@mui/material/Checkbox';
 import IconButton from '@mui/material/IconButton';
-import { Container, ListItemSecondaryAction, Tooltip } from '@mui/material';
+import { Tooltip } from '@mui/material';
 import {
     CheckCircleOutlineRounded,
     DeleteRounded,
-    EditRounded,
     RadioButtonUncheckedRounded,
 } from '@mui/icons-material';
 import { TodoListContext } from '../contexts/TodoListContext';
@@ -19,8 +18,8 @@ function ListElement() {
     const [checked, setChecked] = useState([0]);
     const { todoList, deleteTask } = useContext(TodoListContext);
 
-    const handleTaskDelete = (e) => {
-        console.log(e.target.id);
+    const handleTaskDelete = (id) => {
+        deleteTask(id);
     };
 
     const handleToggle = (value) => () => {
@@ -49,18 +48,15 @@ function ListElement() {
                         key={todo.id}
                         id={todo.id}
                         secondaryAction={
-                            <Container>
-                                <Tooltip title="Edit">
-                                <IconButton edge="end" aria-label="edit">
-                                    <EditRounded color="success" />
-                                </IconButton>
-                                </Tooltip>
-                                <Tooltip title="Delete">
-                                <IconButton edge="end" aria-label="delete" onClick={handleTaskDelete}>
+                            <Tooltip title="Delete">
+                                <IconButton
+                                    edge="end"
+                                    aria-label="delete"
+                                    onClick={() => handleTaskDelete(todo.id)}
+                                >
                                     <DeleteRounded color="error" />
                                 </IconButton>
-                                </Tooltip>
-                            </Container>
+                            </Tooltip>
                         }
                         disablePadding
                     >
@@ -84,6 +80,10 @@ function ListElement() {
                                 id={labelId}
                                 primary={todo.task}
                                 secondary={todo.day}
+                                primaryTypographyProps={{
+                                    color: 'forestgreen',
+                                    fontSize: 20,
+                                }}
                             />
                         </ListItemButton>
                     </ListItem>
