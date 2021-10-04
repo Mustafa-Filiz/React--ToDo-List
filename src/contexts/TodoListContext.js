@@ -2,15 +2,7 @@ import React, { useState, createContext } from 'react';
 
 export const TodoListContext = createContext();
 
-const initialState = [
-    { id: 1, task: 'ptesi', day: 'Monday' },
-    { id: 2, task: 'salı', day: 'Tuesday' },
-    { id: 3, task: 'çarş', day: 'Wednesday' },
-    { id: 4, task: 'perş', day: 'Thursday' },
-    { id: 5, task: 'cum', day: 'Friday' },
-    { id: 6, task: 'cts', day: 'Saturday' },
-    { id: 7, task: 'paz', day: 'Sunday' },
-];
+const initialState = [];
 
 const TodoListContextProvider = ({ children }) => {
     const [todoList, setTodoList] = useState(initialState);
@@ -40,7 +32,7 @@ const TodoListContextProvider = ({ children }) => {
         todoList,
         days,
         addTask,
-        deleteTask
+        deleteTask,
     };
 
     return (
