@@ -12,23 +12,20 @@ import {
     LightModeRounded,
 } from '@mui/icons-material';
 import { Checkbox } from '@mui/material';
-import { ThemeContext } from '../contexts/ThemeContext';
+import { ColorModeContext, ThemeContext } from '../contexts/ThemeContext';
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
+import IconButton from '@mui/material/IconButton';
+import { useTheme, ThemeProvider, createTheme } from '@mui/material/styles';
+
 
 function NavBar() {
     const [auth, setAuth] = useState(true);
-    const { isDark, lightTheme, darkTheme, handleTheme } =
-        useContext(ThemeContext);
-
-    const theme = isDark ? lightTheme : darkTheme;
-
-    // const handleChange = (event) => {
-    //     setAuth(event.target.checked);
-    // };
+    const theme = useTheme();
+    const colorMode = React.useContext(ColorModeContext);
 
     return (
-        <div
-            style={{ color: theme.text, background: theme.background }}
-        >
+        <div style={{ color: theme.text, bgcolor: theme.background }}>
             <AppBar position="static">
                 <Toolbar>
                     <EventAvailableRounded fontSize="large" />
@@ -39,7 +36,18 @@ function NavBar() {
                     >
                         Do Something...
                     </Typography>
-                    <FormControlLabel
+                    <IconButton
+                        sx={{ ml: 1 }}
+                        onClick={colorMode.toggleColorMode}
+                        color="inherit"
+                    >
+                        {theme.palette.mode === 'dark' ? (
+                            <Brightness7Icon />
+                        ) : (
+                            <Brightness4Icon />
+                        )}
+                    </IconButton>
+                    {/* <FormControlLabel
                         control={
                             <Checkbox
                                 icon={
@@ -61,7 +69,7 @@ function NavBar() {
                         }
                         label=""
                         // {auth ? 'Logout' : 'Login'}
-                    />
+                    /> */}
                 </Toolbar>
             </AppBar>
         </div>
