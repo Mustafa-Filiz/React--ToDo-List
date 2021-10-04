@@ -1,14 +1,5 @@
-import {
-    IconButton,
-    Container,
-    FormControl,
-    TextField,
-    FormGroup,
-    Input,
-} from '@mui/material';
-import InputLabel from '@mui/material/InputLabel';
+import { IconButton, Container, FormControl, TextField } from '@mui/material';
 import MenuItem from '@mui/material/MenuItem';
-import Select from '@mui/material/Select';
 import { Box } from '@mui/system';
 import { makeStyles } from '@mui/styles';
 import React, { useContext, useState } from 'react';
@@ -28,7 +19,7 @@ const useStyles = makeStyles({
 });
 
 const Tasks = () => {
-    const { todoList, days, addTask } = useContext(TodoListContext);
+    const { days, addTask } = useContext(TodoListContext);
     const classes = useStyles();
     const [newTask, setNewTask] = useState('');
     const [taskDay, setTaskDay] = useState('');
@@ -36,22 +27,13 @@ const Tasks = () => {
     const handleTaskAdd = (e) => {
         e.preventDefault();
         addTask(newTask, taskDay);
-        setNewTask("");
-        setTaskDay("");
-    }
-
-
+        setNewTask('');
+        setTaskDay('');
+    };
 
     return (
         <Box>
-            {/* <FormGroup
-                className={classes.formGroup}
-                // onSubmit={handleTaskAdd(newTask, taskDay)}
-            > */}
-            {/* <FormControl className={classes.inputField}>
-
-                </FormControl> */}
-            <FormControl variant="standard" className={classes.formGroup} >
+            <FormControl variant="standard" className={classes.formGroup}>
                 <TextField
                     className={classes.inputField}
                     variant="standard"
@@ -78,7 +60,6 @@ const Tasks = () => {
                     <AddCircleOutlineRounded fontSize="large" color="primary" />
                 </IconButton>
             </FormControl>
-            {/* </FormGroup> */}
             <Container>
                 <ListElement />
             </Container>
