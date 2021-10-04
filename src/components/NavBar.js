@@ -47,29 +47,6 @@ function NavBar() {
                             <Brightness4Icon />
                         )}
                     </IconButton>
-                    {/* <FormControlLabel
-                        control={
-                            <Checkbox
-                                icon={
-                                    <DarkModeRounded
-                                        color="secondary"
-                                        fontSize="large"
-                                    />
-                                }
-                                checkedIcon={
-                                    <LightModeRounded
-                                        color="secondary"
-                                        fontSize="large"
-                                    />
-                                }
-                                // checked={auth}
-                                // onChange={handleChange}
-                                aria-label="login switch"
-                            />
-                        }
-                        label=""
-                        // {auth ? 'Logout' : 'Login'}
-                    /> */}
                 </Toolbar>
             </AppBar>
         </div>
