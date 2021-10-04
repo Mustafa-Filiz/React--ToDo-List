@@ -57,7 +57,7 @@ function TabsComp() {
                 flexGrow: 1,
                 bgcolor: 'background.paper',
                 display: 'flex',
-                height: 200,
+                height: "100vh",
             }}
         >
             <Tabs
@@ -70,14 +70,14 @@ function TabsComp() {
                 sx={{ borderRight: 1, borderColor: 'divider' }}
             >
                 <Tab label="Tasks" {...a11yProps(0)} />
-                <Tab label="This Week" {...a11yProps(1)} />
+                {/* <Tab label="This Week" {...a11yProps(1)} /> */}
             </Tabs>
             <TabPanel value={value} index={0}>
                 <Tasks />
             </TabPanel>
-            <TabPanel value={value} index={1}>
-                {/* <ThisWeek /> */} This Week
-            </TabPanel>
+            {/* <TabPanel value={value} index={1}>
+                <ThisWeek />
+            </TabPanel> */}
         </Box>
     );
 }
