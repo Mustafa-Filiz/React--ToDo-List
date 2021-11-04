@@ -5,7 +5,7 @@ import DayCardComp from './DayCardComp';
 
 function ThisWeek() {
     const { todoList, days } = useContext(TodoListContext);
-    const [dailyTasks, setDailyTasks] = useState([])
+    const [dailyTasks, setDailyTasks] = useState([]);
 
     return (
         <Grid
@@ -15,14 +15,7 @@ function ThisWeek() {
             alignItems="center"
             sx={{ margin: 0, padding: 0, maxWidth: 1300 }}
         >
-            {days.map((day) => {
-                setDailyTasks(todoList.filter((item) => day === item.day))
-                return (
-                    <Grid item>
-                        <DayCardComp day={day} dailyTasks={dailyTasks} />
-                    </Grid>
-                );
-            })}
+            Hello
         </Grid>
     );
 }
