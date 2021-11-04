@@ -7,16 +7,27 @@ import ListElement from './ListElement';
 import { TodoListContext } from '../contexts/TodoListContext';
 import { AddCircleOutlineRounded } from '@mui/icons-material';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
     inputField: {
         width: 300,
-        marginRight: '20px',
+        margin: '1rem',
     },
     formGroup: {
+        padding: '1rem',
         display: 'flex',
         flexDirection: 'row',
+        [theme.breakpoints.down('sm')]: {
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+        },
     },
-});
+    listContainer: {
+        maxWidth: '100% !important',
+        display: 'flex',
+        justifyContent: 'flex-start',
+    },
+}));
 
 const Tasks = () => {
     const { days, addTask } = useContext(TodoListContext);
@@ -53,14 +64,16 @@ const Tasks = () => {
                     onChange={(e) => setTaskDay(e.target.value)}
                 >
                     {days.map((day, index) => (
-                        <MenuItem key={index} value={`${day}`}>{day}</MenuItem>
+                        <MenuItem key={index} value={`${day}`}>
+                            {day}
+                        </MenuItem>
                     ))}
                 </TextField>
-                <IconButton type="submit" onClick={handleTaskAdd}>
+                <IconButton type="submit" size="large" onClick={handleTaskAdd}>
                     <AddCircleOutlineRounded fontSize="large" color="primary" />
                 </IconButton>
             </FormControl>
-            <Container>
+            <Container className={classes.listContainer}>
                 <ListElement />
             </Container>
         </Box>

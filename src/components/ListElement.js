@@ -36,7 +36,7 @@ function ListElement() {
 
     return (
         <List
-            sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
+            sx={{ width: '100%', maxWidth: 400, bgcolor: 'background.paper' }}
         >
             {todoList.map((todo) => {
                 const labelId = `checkbox-list-label-${todo.id}`;
