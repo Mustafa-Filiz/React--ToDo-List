@@ -31,7 +31,6 @@ function ListElement() {
         } else {
             newChecked.splice(currentIndex, 1);
         }
-
         setChecked(newChecked);
     };
 
@@ -44,7 +43,7 @@ function ListElement() {
 
                 return (
                     <ListItem
-                        // sx={{textDecoration : "line-through", opacity : 0.5}}
+                    sx={checked.includes(todo.id) && {textDecoration : "line-through", opacity : 0.5}}
                         key={todo.id}
                         id={todo.id}
                         secondaryAction={
