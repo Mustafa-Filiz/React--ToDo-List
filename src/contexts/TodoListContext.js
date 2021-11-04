@@ -1,4 +1,4 @@
-import React, { useState, createContext } from 'react';
+import React, { useState, createContext, useEffect } from 'react';
 
 export const TodoListContext = createContext();
 
@@ -28,7 +28,19 @@ const TodoListContextProvider = ({ children }) => {
 
     const deleteTask = (id) => {
         setTodoList(todoList.filter(todo => todo.id !== Number(id)))
+
     }
+
+    useEffect(() => {
+        const localList = window.localStorage.getItem("todo List")
+        if (localList.length) {
+            setTodoList(JSON.parse(localList))
+        }
+    }, [])
+
+    useEffect(() => {
+        window.localStorage.setItem("todo List", JSON.stringify(todoList));
+    }, [todoList])
 
     const values = {
         todoList,
