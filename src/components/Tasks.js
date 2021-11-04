@@ -52,8 +52,8 @@ const Tasks = () => {
                     value={taskDay}
                     onChange={(e) => setTaskDay(e.target.value)}
                 >
-                    {days.map((day) => (
-                        <MenuItem value={`${day}`}>{day}</MenuItem>
+                    {days.map((day, index) => (
+                        <MenuItem key={index} value={`${day}`}>{day}</MenuItem>
                     ))}
                 </TextField>
                 <IconButton type="submit" onClick={handleTaskAdd}>
