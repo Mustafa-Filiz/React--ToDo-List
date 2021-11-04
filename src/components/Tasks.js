@@ -10,15 +10,16 @@ import { AddCircleOutlineRounded } from '@mui/icons-material';
 const useStyles = makeStyles((theme) => ({
     inputField: {
         width: 300,
-        margin: '1rem',
+        marginRight: '1rem',
+        marginBottom : "0.5rem",
     },
     formGroup: {
         padding: '1rem',
         display: 'flex',
         flexDirection: 'row',
-        [theme.breakpoints.down('sm')]: {
+        [theme.breakpoints.down('md')]: {
             flexDirection: 'column',
-            justifyContent: 'center',
+            justifyContent: 'space-evenly',
             alignItems: 'center',
         },
     },

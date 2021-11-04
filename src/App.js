@@ -11,8 +11,8 @@ function App() {
             <ToggleColorMode>
                 <NavBar />
                 <TodoListContextProvider>
-                    {/* <TabsComp /> */}
-                    <Tasks />
+                    <TabsComp />
+                    {/* <Tasks /> */}
                 </TodoListContextProvider>
             </ToggleColorMode>
         </div>

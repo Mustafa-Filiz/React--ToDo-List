@@ -7,11 +7,11 @@ import { makeStyles } from '@mui/styles';
 import Tasks from './Tasks';
 import ThisWeek from './ThisWeek';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
     tabField: {
         width: 200,
     },
-});
+}));
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
