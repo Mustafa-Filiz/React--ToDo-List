@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
@@ -29,19 +28,6 @@ function TabPanel(props) {
     );
 }
 
-TabPanel.propTypes = {
-    children: PropTypes.node,
-    index: PropTypes.number.isRequired,
-    value: PropTypes.number.isRequired,
-};
-
-function a11yProps(index) {
-    return {
-        id: `vertical-tab-${index}`,
-        'aria-controls': `vertical-tabpanel-${index}`,
-    };
-}
-
 function TabsComp() {
     const [value, setValue] = useState(0);
 
@@ -57,7 +43,7 @@ function TabsComp() {
                 flexGrow: 1,
                 bgcolor: 'background.paper',
                 display: 'flex',
-                height: "100vh",
+                height: "90vh",
             }}
         >
             <Tabs
@@ -69,8 +55,8 @@ function TabsComp() {
                 aria-label="Vertical tabs example"
                 sx={{ borderRight: 1, borderColor: 'divider' }}
             >
-                <Tab label="Tasks" {...a11yProps(0)} />
-                <Tab label="This Week" {...a11yProps(1)} />
+                <Tab label="Tasks" />
+                <Tab label="This Week" />
             </Tabs>
             <TabPanel value={value} index={0}>
                 <Tasks />
