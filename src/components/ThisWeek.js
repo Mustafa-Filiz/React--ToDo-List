@@ -1,7 +1,6 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { Grid, Paper } from '@mui/material';
 import { TodoListContext } from '../contexts/TodoListContext';
-import DayCardComp from './DayCardComp';
 import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles(() => {
@@ -15,9 +14,6 @@ const useStyles = makeStyles(() => {
 function ThisWeek() {
     const classes = useStyles();
     const { todoList, days } = useContext(TodoListContext);
-    const [dailyTasks, setDailyTasks] = useState([]);
-
-    // console.log(todoList);
 
     return (
         <Grid
@@ -30,12 +26,14 @@ function ThisWeek() {
             {days.map((day, index) => {
                 const items = todoList.filter((todo) => todo.day === day);
                 return (
-                    <Paper className={classes.paper} key={index}>
-                        {day}
-                        {items.map((item) => (
-                            <li key={item.id}> {item.task}</li>
-                        ))}
-                    </Paper>
+                    <Grid item key={index}>
+                        <Paper className={classes.paper}>
+                            {day}
+                            {items.map((item) => (
+                                <li key={item.id}> {item.task}</li>
+                            ))}
+                        </Paper>
+                    </Grid>
                 );
             })}
         </Grid>
