@@ -39,11 +39,11 @@ function ListElement() {
             sx={{ width: '100%', maxWidth: 400, bgcolor: 'background.paper' }}
         >
             {todoList.map((todo) => {
-                const labelId = `checkbox-list-label-${todo.id}`;
+                const labelid = `checkbox-list-label-${todo.id}`;
 
                 return (
                     <ListItem
-                    sx={checked.includes(todo.id) && {textDecoration : "line-through", opacity : 0.5}}
+                        sx={checked.includes(todo.id) ? {textDecoration: 'line-through', opacity: 0.5} : {}}
                         key={todo.id}
                         id={todo.id}
                         secondaryAction={
@@ -72,11 +72,11 @@ function ListElement() {
                                     checked={checked.indexOf(todo.id) !== -1}
                                     tabIndex={-1}
                                     disableRipple
-                                    inputProps={{ 'aria-labelledby': labelId }}
+                                    inputProps={{ 'aria-labelledby': labelid }}
                                 />
                             </ListItemIcon>
                             <ListItemText
-                                id={labelId}
+                                id={labelid}
                                 primary={todo.task}
                                 secondary={todo.day}
                                 primaryTypographyProps={{
