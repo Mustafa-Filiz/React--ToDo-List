@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 
@@ -29,7 +29,6 @@ export default function ToggleColorMode({children}) {
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
           {children}
-        {/* <MyApp /> */}
       </ThemeProvider>
     </ColorModeContext.Provider>
   );
