@@ -20,7 +20,7 @@ const TodoListContextProvider = ({ children }) => {
         if (todo) {
             return setTodoList([
                 ...todoList,
-                { task: todo, day, id: Math.random(), isCompleted: false },
+                { task: todo, day, id: Math.random()},
             ]);
         }
     };
