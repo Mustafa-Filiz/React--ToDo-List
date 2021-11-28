@@ -43,7 +43,6 @@ function TabsComp() {
                 flexGrow: 1,
                 bgcolor: 'background.paper',
                 display: 'flex',
-                height: "90vh",
             }}
         >
             <Tabs
