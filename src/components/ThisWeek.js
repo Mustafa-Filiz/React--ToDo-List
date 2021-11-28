@@ -1,11 +1,13 @@
 import React, { useContext } from 'react';
-import { Grid, Paper } from '@mui/material';
+import { Grid, Paper, Typography } from '@mui/material';
 import { TodoListContext } from '../contexts/TodoListContext';
 import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles(() => {
     return {
         paper: {
+            width: '30rem',
+            height: '10rem',
             padding: '2rem',
         },
     };
@@ -27,8 +29,8 @@ function ThisWeek() {
                 const items = todoList.filter((todo) => todo.day === day);
                 return (
                     <Grid item key={index}>
-                        <Paper className={classes.paper}>
-                            {day}
+                        <Paper className={classes.paper} elevation={8}>
+                            <Typography variant="h6"> {day}</Typography>
                             {items.map((item) => (
                                 <li key={item.id}> {item.task}</li>
                             ))}
