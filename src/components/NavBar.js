@@ -16,7 +16,7 @@ function NavBar() {
     const colorMode = useContext(ColorModeContext);
 
     return (
-        <AppBar position="static">
+        <AppBar position="static" sx={{ width: '100%' }}>
             <Toolbar>
                 <EventAvailableRounded fontSize="large" />
                 <Typography variant="h5" component="div" sx={{ flexGrow: 1 }}>
