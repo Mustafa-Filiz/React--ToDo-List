@@ -8,7 +8,7 @@ import ThisWeek from './ThisWeek';
 
 const useStyles = makeStyles(theme => ({
     tabField: {
-        width: 200,
+        minWidth: 200,
     },
 }));
 
@@ -43,6 +43,8 @@ function TabsComp() {
                 flexGrow: 1,
                 bgcolor: 'background.paper',
                 display: 'flex',
+                height: "auto",
+                minHeight: "calc(100vh - 64px)"
             }}
         >
             <Tabs
@@ -55,7 +57,7 @@ function TabsComp() {
                 sx={{ borderRight: 1, borderColor: 'divider' }}
             >
                 <Tab label="Tasks" />
-                <Tab label="This Week" />
+                <Tab label="Weekly" />
             </Tabs>
             <TabPanel value={value} index={0}>
                 <Tasks />

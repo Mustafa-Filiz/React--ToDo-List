@@ -17,12 +17,11 @@ const TodoListContextProvider = ({ children }) => {
     ];
 
     const addTask = (todo, day) => {
-        if (todo) {
-            return setTodoList([
-                ...todoList,
-                { task: todo, day, id: Math.random()},
-            ]);
-        }
+        if (!todo) return
+        setTodoList([
+            ...todoList,
+            { task: todo, day, id: Math.random()},
+        ]);
     };
 
     const deleteTask = (id) => {

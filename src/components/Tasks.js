@@ -43,6 +43,10 @@ const Tasks = () => {
         setTaskDay('');
     };
 
+    const handleTaskChange = (e) => setNewTask(e.target.value)
+    
+    const handleDayChange = (e) => setTaskDay(e.target.value)
+
     return (
         <Box>
             <FormControl variant="standard" className={classes.formGroup}>
@@ -51,7 +55,7 @@ const Tasks = () => {
                     variant="standard"
                     label="Add task"
                     value={newTask}
-                    onChange={(e) => setNewTask(e.target.value)}
+                    onChange={handleTaskChange}
                 />
                 <TextField
                     select
@@ -62,10 +66,10 @@ const Tasks = () => {
                     label="Select Task Day"
                     defaultValue=""
                     value={taskDay}
-                    onChange={(e) => setTaskDay(e.target.value)}
+                    onChange={handleDayChange}
                 >
                     {days.map((day, index) => (
-                        <MenuItem key={index} value={`${day}`}>
+                        <MenuItem key={index} value={day}>
                             {day}
                         </MenuItem>
                     ))}
