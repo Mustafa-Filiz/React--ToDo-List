@@ -15,23 +15,14 @@ import {
 import { TodoListContext } from '../contexts/TodoListContext';
 
 function ListElement() {
-    const [checked, setChecked] = useState([0]);
-    const { todoList, deleteTask } = useContext(TodoListContext);
+    const { todoList, deleteTask, toggleCompleted } = useContext(TodoListContext);
 
     const handleTaskDelete = (id) => {
         deleteTask(id);
     };
 
-    const handleToggle = (value) => () => {
-        const currentIndex = checked.indexOf(value);
-        const newChecked = [...checked];
-
-        if (currentIndex === -1) {
-            newChecked.push(value);
-        } else {
-            newChecked.splice(currentIndex, 1);
-        }
-        setChecked(newChecked);
+    const handleToggle = (id) => () => {
+        toggleCompleted(id)
     };
 
     return (
@@ -43,7 +34,7 @@ function ListElement() {
 
                 return (
                     <ListItem
-                        sx={checked.includes(todo.id) ? {textDecoration: 'line-through', opacity: 0.5} : {}}
+                        sx={todo.completed ? {textDecoration: 'line-through', opacity: 0.5} : {}}
                         key={todo.id}
                         id={todo.id}
                         secondaryAction={
@@ -69,7 +60,7 @@ function ListElement() {
                                     icon={<RadioButtonUncheckedRounded />}
                                     checkedIcon={<CheckCircleOutlineRounded />}
                                     edge="start"
-                                    checked={checked.indexOf(todo.id) !== -1}
+                                    checked={todo.completed}
                                     tabIndex={-1}
                                     disableRipple
                                     inputProps={{ 'aria-labelledby': labelid }}

@@ -6,9 +6,9 @@ import { makeStyles } from '@mui/styles';
 const useStyles = makeStyles(() => {
     return {
         paper: {
-            width: 'calc(100vw - 400px)',
-            height: '9rem',
-            padding: '2rem',
+            width: 'calc((100vw - 550px) / 7)',
+            height: 'calc(100vh - 400px)',
+            padding: "10px", 
         },
     };
 });
@@ -23,7 +23,6 @@ function ThisWeek() {
             spacing={2}
             justifyContent="center"
             alignItems="center"
-            sx={{ margin: 0, padding: 0 }}
         >
             {days.map((day, index) => {
                 const items = todoList.filter((todo) => todo.day === day);

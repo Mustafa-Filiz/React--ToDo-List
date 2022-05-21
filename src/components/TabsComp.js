@@ -40,7 +40,6 @@ function TabsComp() {
     return (
         <Box
             sx={{
-                flexGrow: 1,
                 bgcolor: 'background.paper',
                 display: 'flex',
                 height: "auto",
@@ -62,7 +61,7 @@ function TabsComp() {
             <TabPanel value={value} index={0}>
                 <Tasks />
             </TabPanel>
-            <TabPanel value={value} index={1}>
+            <TabPanel value={value} index={1} style={{flexGrow: 1}}>
                 <ThisWeek />
             </TabPanel>
         </Box>

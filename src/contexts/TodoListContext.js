@@ -18,21 +18,27 @@ const TodoListContextProvider = ({ children }) => {
 
     const addTask = (todo, day) => {
         if (!todo) return
-        setTodoList([
-            ...todoList,
-            { task: todo, day, id: Math.random()},
-        ]);
+        setTodoList((prevTodos) => {
+            return [
+                ...prevTodos,
+                {  id: Math.random(), task: todo, day, completed: false},
+            ]
+        });
     };
 
     const deleteTask = (id) => {
         setTodoList(todoList.filter((todo) => todo.id !== Number(id)));
     };
 
+    const toggleCompleted = (id) => {
+        setTodoList(todoList.map((todo) => todo.id === id ? {...todo, completed: !todo.completed} : todo))
+    }
+
     useEffect(() => {
         const localList = window.localStorage.getItem('todo List');
-        if (localList.length) {
-            setTodoList(JSON.parse(localList));
-        }
+        if (!localList) return
+
+        setTodoList(JSON.parse(localList));
     }, []);
 
     useEffect(() => {
@@ -44,6 +50,7 @@ const TodoListContextProvider = ({ children }) => {
         days,
         addTask,
         deleteTask,
+        toggleCompleted,
     };
 
     return (
